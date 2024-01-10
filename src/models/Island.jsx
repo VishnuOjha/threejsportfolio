@@ -14,21 +14,21 @@ import { a } from "@react-spring/three";
 
 import isIsland from "../assets/3d/island.glb";
 
-const Island = ({ isRotating, setRotating, ...props }) => {
+const Island = ({ isRotating, setRotating, setCurrentStage, ...props }) => {
   const islandRef = useRef();
   const { gl, viewport } = useThree();
   const { nodes, materials } = useGLTF(isIsland);
 
   const lastX = useRef(0);
   const rotationSpeed = useRef(0);
-  const dumpingFactor = 0.95;
+  const dampingFactor = 0.95;
 
   const handlePointerDown = (e) => {
     e.stopPropagation();
     e.preventDefault();
     setRotating(true);
 
-    const clientX = e?.touches ? e?.touches[0]?.clientX : e?.clientX;
+    const clientX = e.touches ? e.touches[0].clientX : e.clientX;
   };
 
   const handlePointerUp = (e) => {
@@ -42,7 +42,7 @@ const Island = ({ isRotating, setRotating, ...props }) => {
     e.preventDefault();
 
     if (isRotating) {
-      const clientX = e?.touches ? e?.touches[0]?.clientX : e?.clientX;
+      const clientX = e.touches ? e.touches[0].clientX : e.clientX;
       const delta = (clientX - lastX.current) / viewport.width;
       islandRef.current.rotation.y += delta * 0.01 * Math.PI;
       lastX.current = clientX;
@@ -68,7 +68,7 @@ const Island = ({ isRotating, setRotating, ...props }) => {
 
   useFrame(() => {
     if (!isRotating) {
-      rotationSpeed.current *= dumpingFactor;
+      rotationSpeed.current *= dampingFactor;
 
       if (Math.abs(rotationSpeed.current) < 0.001) {
         rotationSpeed.current = 0;
@@ -131,15 +131,7 @@ const Island = ({ isRotating, setRotating, ...props }) => {
       document.addEventListener("keydown", handleKeyDown);
       document.addEventListener("keyup", handleKeyUp);
     };
-  }, [
-    gl,
-    viewport,
-    handlePointerDown,
-    handlePointerMove,
-    handlePointerUp,
-    handleKeyDown,
-    handleKeyUp,
-  ]);
+  }, [gl, handlePointerDown, handlePointerMove, handlePointerUp]);
 
   return (
     <a.group {...props} ref={islandRef}>
