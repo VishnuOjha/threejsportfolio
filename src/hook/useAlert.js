@@ -3,9 +3,9 @@ import { useState } from "react";
 export default function useAlert() {
   const [alert, setAlert] = useState({ show: false, text: "", type: "danger" });
 
-  const showAlert = (text, type) =>
+  const showAlert = (show = true, text, type) =>
     setAlert({
-      show: true,
+      show: show,
       text,
       type,
     });
