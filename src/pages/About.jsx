@@ -10,15 +10,18 @@ const About = () => {
   return (
     <section className="max-container">
       <h1 className="head-text">
-        Hello, I'm{" "}
-        <span className="blue-gradient_text font-semibold drop-shadow">
+        Hello, I'm 
+        <span className="blue-gradient_text font-semibold drop-shadow mx-2">
           Vishnu
         </span>
       </h1>
       <div>
         <p className="mt-5 flex flex-col gap-3 text-slate-500">
-          Software Engineer based in Ahmedabad, Specializing in technical
-          solution through building hands-on applications.
+          Passionate and results-driven React.js developer with 2.5 years of
+          hands-on experience, dedicated to creating dynamic and responsive web
+          applications that deliver seamless user experiences. Proficient in
+          leveraging cutting-edge technologies to transform innovative ideas
+          into robust and scalable solutions.
         </p>
       </div>
       <div className="py-10 flex flex-col">
@@ -26,14 +29,14 @@ const About = () => {
         <div className="mt-16 flex flex-wrap gap-12">
           {skills.map((skill) => (
             <div className="block-container w-20 h-20" key={skill.name}>
-              <div className='btn-back rounded-xl'>
-              <div className="btn-front rounded-xl flex justify-center items-center">
-                <img
-                  src={skill.imageUrl}
-                  alt={skill.name}
-                  className="w-1/2 h-1/2 object-contain"
-                />
-              </div>
+              <div className="btn-back rounded-xl">
+                <div className="btn-front rounded-xl flex justify-center items-center">
+                  <img
+                    src={skill.imageUrl}
+                    alt={skill.name}
+                    className="w-1/2 h-1/2 object-contain"
+                  />
+                </div>
               </div>
             </div>
           ))}
@@ -43,7 +46,7 @@ const About = () => {
         <h3 className="subhead-text">Work Experience</h3>
         <div className="mt-5 flex flex-col gap-3 text-slate-500">
           <p>
-            I've worked with all sorts of companies, leveling up my skills and
+            I've worked on many projects in React js, leveling up my skills and
             teaming up with smart people. Here's he rundown :
           </p>
         </div>
@@ -98,7 +101,7 @@ const About = () => {
           </VerticalTimeline>
         </div>
       </div>
-      <hr className="border-slate-200"/>
+      <hr className="border-slate-200" />
       <CTA />
     </section>
   );
