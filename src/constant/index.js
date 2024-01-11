@@ -208,6 +208,6 @@ export const projects = [
     name: "NIS (NCC Integrated System)",
     description:
       "Contributed in this project to stand up from scratch, implemented lot's of new functionality and features, implement standard react practice with redux to manage the state in the whole application.",
-    // link: 'https://github.com/adrianhajdin/social_media_app',
+    link: 'https://nis.ncog.gov.in/',
   },
 ];
